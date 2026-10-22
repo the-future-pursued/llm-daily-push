@@ -1,0 +1,842 @@
+[
+ {
+  "day": 1,
+  "week": 1,
+  "course": "白话大模型",
+  "range": "01—10",
+  "tag": "概念",
+  "task": "AI / 机器学习 / 深度学习 / 生成式 AI / 大模型分别是什么",
+  "output": "5 条笔记：用自己的话解释 5 个概念",
+  "time": "1.5h"
+ },
+ {
+  "day": 2,
+  "week": 1,
+  "course": "白话大模型",
+  "range": "11—20",
+  "tag": "概念",
+  "task": "NLP、CV、语音、多模态的常见任务；主流模型能力小结",
+  "output": "1 页“AI 能力地图”",
+  "time": "1.5h"
+ },
+ {
+  "day": 3,
+  "week": 1,
+  "course": "白话大模型",
+  "range": "21—30",
+  "tag": "概念",
+  "task": "开源/闭源、HuggingFace、LLM 工作原理、Token、词表、多轮对话",
+  "output": "画出 token→词表→生成 的流程",
+  "time": "1.5h"
+ },
+ {
+  "day": 4,
+  "week": 1,
+  "course": "白话大模型",
+  "range": "31—40",
+  "tag": "概念",
+  "task": "系统/用户提示词、聊天模板、工具调用、MCP 概念",
+  "output": "写 3 个 prompt 版本并比较",
+  "time": "1.5h"
+ },
+ {
+  "day": 5,
+  "week": 1,
+  "course": "Git精品课",
+  "range": "01—12",
+  "tag": "工具",
+  "task": "Git 安装、本地仓库、工作区/暂存区/版本库、添加文件、查看 .git、修改、回退",
+  "output": "建仓库 llm-12weeks，提交 2 次",
+  "time": "1.5h"
+ },
+ {
+  "day": 6,
+  "week": 1,
+  "course": "Git精品课",
+  "range": "13—23",
+  "tag": "工具",
+  "task": "撤销修改、分支、合并、远程仓库",
+  "output": "练一次 branch→修改→merge；写 README",
+  "time": "1.5h"
+ },
+ {
+  "day": 7,
+  "week": 1,
+  "course": "复盘",
+  "range": "第 1 周",
+  "tag": "复盘",
+  "task": "复盘 5 个概念；整理 Git 仓库；写“我为什么要学 LLM”",
+  "output": "1 页 LLM 知识地图 + README",
+  "time": "3h"
+ },
+ {
+  "day": 8,
+  "week": 2,
+  "course": "RAG 初阶",
+  "range": "01—05",
+  "tag": "RAG 初阶",
+  "task": "RAG 授课思路、开发环境、LlamaIndex 安装、知识库构建目录、数据解析代码",
+  "output": "画出 RAG 五步流程图",
+  "time": "1.5h"
+ },
+ {
+  "day": 9,
+  "week": 2,
+  "course": "RAG 初阶",
+  "range": "06—10",
+  "tag": "RAG 初阶",
+  "task": "数据解析测试、清洗公共方法、清洗文本、生成清洗对象、测试",
+  "output": "整理“文档→干净文本”的流程",
+  "time": "1.5h"
+ },
+ {
+  "day": 10,
+  "week": 2,
+  "course": "RAG 初阶",
+  "range": "11—15",
+  "tag": "RAG 初阶",
+  "task": "固定大小分块：公共方法、实现、测试；语义分块：原理、嵌入模型下载",
+  "output": "把 10 页文档切成固定 chunk",
+  "time": "1.5h"
+ },
+ {
+  "day": 11,
+  "week": 2,
+  "course": "RAG 初阶",
+  "range": "16—20",
+  "tag": "RAG 初阶",
+  "task": "语义分块：嵌入测试、代码、测试；递归分块：代码、测试",
+  "output": "比较固定/语义/递归三种切法",
+  "time": "1.5h"
+ },
+ {
+  "day": 12,
+  "week": 2,
+  "course": "RAG 初阶",
+  "range": "21—26",
+  "tag": "RAG 初阶",
+  "task": "文档结构分块：PPT / PDF / CSV / TXT",
+  "output": "用一份 PDF 做结构化切分",
+  "time": "1.5h"
+ },
+ {
+  "day": 13,
+  "week": 2,
+  "course": "RAG 初阶",
+  "range": "27—33",
+  "tag": "RAG 初阶",
+  "task": "LLM 分块：引入、实例、封装、代码、测试；向量嵌入：余弦、欧氏",
+  "output": "跑通 LLM 分块 + 余弦相似度",
+  "time": "1.5h"
+ },
+ {
+  "day": 14,
+  "week": 2,
+  "course": "RAG 初阶",
+  "range": "34—40",
+  "tag": "RAG 初阶",
+  "task": "点积距离、Milvus 安装/封装/插入/查询/文本检索、数据检索基础",
+  "output": "建一个 Milvus 集合并检索 top-3",
+  "time": "3h"
+ },
+ {
+  "day": 15,
+  "week": 3,
+  "course": "RAG 初阶",
+  "range": "41—48",
+  "tag": "RAG 初阶",
+  "task": "数据检索代码/测试；提示词增强：初始化向量库、上下文压缩、测试；LLM 生成",
+  "output": "答案必须带出处；无依据要拒答",
+  "time": "1.5h"
+ },
+ {
+  "day": 16,
+  "week": 3,
+  "course": "RAG 初阶",
+  "range": "49—55",
+  "tag": "RAG 初阶",
+  "task": "实战：课程内容、数据集、数据简化、分块、建 DB、向量化插入",
+  "output": "项目数据管线跑通",
+  "time": "1.5h"
+ },
+ {
+  "day": 17,
+  "week": 3,
+  "course": "RAG 初阶",
+  "range": "56—60",
+  "tag": "RAG 初阶",
+  "task": "实战：检索+提示词增强+生成、Web 框架、重建索引、医疗问答、前端部署、小结",
+  "output": "命令行 RAG demo + README",
+  "time": "1.5h"
+ },
+ {
+  "day": 18,
+  "week": 3,
+  "course": "RAG 进阶",
+  "range": "01—07",
+  "tag": "RAG 进阶",
+  "task": "进阶思路；分块优化：放大检索原理、父子分块原理/配置/节点/索引/测试",
+  "output": "实现一次父子分块检索",
+  "time": "1.5h"
+ },
+ {
+  "day": 19,
+  "week": 3,
+  "course": "RAG 进阶",
+  "range": "08—15",
+  "tag": "RAG 进阶",
+  "task": "句子窗口检索：原理、数据登记、向量索引、检索、测试；总结摘要分块",
+  "output": "比较句子窗口 vs 普通分块",
+  "time": "1.5h"
+ },
+ {
+  "day": 20,
+  "week": 3,
+  "course": "RAG 进阶",
+  "range": "16—22",
+  "tag": "RAG 进阶",
+  "task": "总结摘要测试；元数据过滤：原理、字段、条件解析、输出格式、内容检索、测试",
+  "output": "给 chunk 加 metadata 并按条件过滤",
+  "time": "1.5h"
+ },
+ {
+  "day": 21,
+  "week": 3,
+  "course": "复盘",
+  "range": "第 3 周",
+  "tag": "复盘",
+  "task": "用 LlamaIndex 对 20 页烧结资料做 RAG demo；记录 5 类失败",
+  "output": "可运行 demo + failures.md",
+  "time": "3h"
+ },
+ {
+  "day": 22,
+  "week": 4,
+  "course": "RAG 进阶",
+  "range": "23—27",
+  "tag": "RAG 进阶",
+  "task": "结构化分层索引：原理、层级节点列表、执行层级检索、方法封装、测试",
+  "output": "画一张层级索引结构图",
+  "time": "1.5h"
+ },
+ {
+  "day": 23,
+  "week": 4,
+  "course": "RAG 进阶",
+  "range": "28—35",
+  "tag": "RAG 进阶",
+  "task": "知识图谱：原理、三元组、LLM 判断查询、实体解析、BFS 检索、遍历、图索引、测试",
+  "output": "用 10 个实体建一个小图谱",
+  "time": "1.5h"
+ },
+ {
+  "day": 24,
+  "week": 4,
+  "course": "RAG 进阶",
+  "range": "36—43",
+  "tag": "RAG 进阶",
+  "task": "检索前处理：规则加载、纠正/删除/提取、合并、测试；意图识别原理/代码/测试",
+  "output": "写 5 条查询预处理规则",
+  "time": "1.5h"
+ },
+ {
+  "day": 25,
+  "week": 4,
+  "course": "RAG 进阶",
+  "range": "44—50",
+  "tag": "RAG 进阶",
+  "task": "查询扩写：多路查询原理/生成变体/检索/测试；子查询原理/代码/测试",
+  "output": "实现 multi-query 检索",
+  "time": "1.5h"
+ },
+ {
+  "day": 26,
+  "week": 4,
+  "course": "RAG 进阶",
+  "range": "51—55",
+  "tag": "RAG 进阶",
+  "task": "验证链：原理、提示词模板、LLM 生成与验证、对比普通查询、测试",
+  "output": "给答案加“验证”步骤",
+  "time": "1.5h"
+ },
+ {
+  "day": 27,
+  "week": 4,
+  "course": "RAG 进阶",
+  "range": "56—60",
+  "tag": "RAG 进阶",
+  "task": "假设文档嵌入（HyDE）：原理、生成、对比、测试；后退提示：原理、模板、过滤字段",
+  "output": "实现一次 HyDE 或后退提示",
+  "time": "1.5h"
+ },
+ {
+  "day": 28,
+  "week": 4,
+  "course": "复盘",
+  "range": "第 4 周",
+  "tag": "复盘",
+  "task": "整理 RAG 进阶技术地图：分块/索引/预处理/路由/重排",
+  "output": "1 页技术地图 + 代码提交",
+  "time": "3h"
+ },
+ {
+  "day": 29,
+  "week": 5,
+  "course": "RAG 进阶",
+  "range": "61—66",
+  "tag": "RAG 进阶",
+  "task": "后退提示：根据原问题生成过滤条件、向量检索、后退提示检索、测试",
+  "output": "记录后退提示的提升/失败案例",
+  "time": "1.5h"
+ },
+ {
+  "day": 30,
+  "week": 5,
+  "course": "RAG 进阶",
+  "range": "67—71",
+  "tag": "RAG 进阶",
+  "task": "查询路由：元数据路由原理、构建多个向量索引、路由检索、对外方法、测试",
+  "output": "实现按文档类型路由",
+  "time": "1.5h"
+ },
+ {
+  "day": 31,
+  "week": 5,
+  "course": "RAG 进阶",
+  "range": "72—76",
+  "tag": "RAG 进阶",
+  "task": "语义路由：原理、生成 node 列表、标签修正、路由检索、测试",
+  "output": "实现语义路由",
+  "time": "1.5h"
+ },
+ {
+  "day": 32,
+  "week": 5,
+  "course": "RAG 进阶",
+  "range": "77—84",
+  "tag": "RAG 进阶",
+  "task": "稀疏检索、稠密检索、混合检索：原理、融合得分、格式化输出、测试",
+  "output": "BM25+dense 混合检索对比",
+  "time": "1.5h"
+ },
+ {
+  "day": 33,
+  "week": 5,
+  "course": "RAG 进阶",
+  "range": "85—91",
+  "tag": "RAG 进阶",
+  "task": "检索后处理：结果过滤四种方案、相似度/规则/元数据/语义过滤、测试",
+  "output": "给检索结果加过滤",
+  "time": "1.5h"
+ },
+ {
+  "day": 34,
+  "week": 5,
+  "course": "RAG 进阶",
+  "range": "92—96",
+  "tag": "RAG 进阶",
+  "task": "去重：原理、初步检索、精确去重、语义去重、测试",
+  "output": "统计去重前后上下文长度",
+  "time": "1.5h"
+ },
+ {
+  "day": 35,
+  "week": 5,
+  "course": "RAG 进阶",
+  "range": "97—103",
+  "tag": "RAG 进阶",
+  "task": "重排：规则重排原理/索引/规则/测试；交叉编码器重排原理/代码/测试",
+  "output": "对比重排前后 top-3",
+  "time": "3h"
+ },
+ {
+  "day": 36,
+  "week": 6,
+  "course": "RAG 进阶",
+  "range": "104—110",
+  "tag": "RAG 进阶",
+  "task": "LLM 重排原理/测试；上下文压缩；生成后处理原理/代码/测试",
+  "output": "实现一次 LLM 重排或后处理",
+  "time": "1.5h"
+ },
+ {
+  "day": 37,
+  "week": 6,
+  "course": "RAG 进阶",
+  "range": "111—116",
+  "tag": "RAG 进阶",
+  "task": "实战：效果演示与方案设计、向量库封装、嵌入模型、数据加载、连接库、向量化插入",
+  "output": "项目骨架 + 数据入库",
+  "time": "1.5h"
+ },
+ {
+  "day": 38,
+  "week": 6,
+  "course": "RAG 进阶",
+  "range": "117—120",
+  "tag": "RAG 进阶",
+  "task": "实战：意图识别与元数据路由、确定路由与向量检索、相似度去重、交叉编码器重排",
+  "output": "完整检索链跑通",
+  "time": "1.5h"
+ },
+ {
+  "day": 39,
+  "week": 6,
+  "course": "RAG 进阶",
+  "range": "121—127",
+  "tag": "RAG 进阶",
+  "task": "实战：提示词生成、生成后处理、重建索引、医疗问答、Web、前端、测试",
+  "output": "最终 RAG demo + 测试记录",
+  "time": "1.5h"
+ },
+ {
+  "day": 40,
+  "week": 6,
+  "course": "LangChain",
+  "range": "01—05",
+  "tag": "LangChain",
+  "task": "宏观认识 LangChain/大模型；认识模型、认识 LLM、主流 LLM",
+  "output": "写出 LangChain 能解决哪 3 个问题",
+  "time": "1.5h"
+ },
+ {
+  "day": 41,
+  "week": 6,
+  "course": "LangChain",
+  "range": "06—10",
+  "tag": "LangChain",
+  "task": "LLM 能力归纳；提示词编写技巧 1/2/3；LLM 为什么重要",
+  "output": "3 个 prompt 技巧各写一个例子",
+  "time": "1.5h"
+ },
+ {
+  "day": 42,
+  "week": 6,
+  "course": "LangChain",
+  "range": "11—15",
+  "tag": "LangChain",
+  "task": "LLM 接入方式：API、本地部署、SDK 接入等",
+  "output": "跑通一次 API 或本地模型调用",
+  "time": "3h"
+ },
+ {
+  "day": 43,
+  "week": 7,
+  "course": "LangChain",
+  "range": "16—22",
+  "tag": "LangChain",
+  "task": "嵌入模型应用/接入；AI 编程范式；LLM 框架生态；LLM 六大问题",
+  "output": "整理“为什么需要 LangChain”",
+  "time": "1.5h"
+ },
+ {
+  "day": 44,
+  "week": 7,
+  "course": "LangChain",
+  "range": "23—29",
+  "tag": "LangChain",
+  "task": "LangChain / LangGraph 介绍、学习路径、软件包、快速上手、Runnable 与 LCEL",
+  "output": "跑通最小 Chain",
+  "time": "1.5h"
+ },
+ {
+  "day": 45,
+  "week": 7,
+  "course": "LangChain",
+  "range": "30—36",
+  "tag": "LangChain",
+  "task": "ChatOpenAI、init_chat_model、本地部署、工具介绍、@tool、StructuredTool",
+  "output": "定义 2 个工具并调用",
+  "time": "1.5h"
+ },
+ {
+  "day": 46,
+  "week": 7,
+  "course": "LangChain",
+  "range": "37—43",
+  "tag": "LangChain",
+  "task": "工具绑定与调用、搜索工具、结构化返回（Pydantic/TypedDict/JSON Schema）",
+  "output": "让模型返回结构化 JSON",
+  "time": "1.5h"
+ },
+ {
+  "day": 47,
+  "week": 7,
+  "course": "LangChain",
+  "range": "44—50",
+  "tag": "LangChain",
+  "task": "结构化返回选择结构/场景；流式传输：stream/astream/自定义/SSE",
+  "output": "实现流式输出",
+  "time": "1.5h"
+ },
+ {
+  "day": 48,
+  "week": 7,
+  "course": "LangChain",
+  "range": "51—58",
+  "tag": "LangChain",
+  "task": "LangSmith、消息回顾、多轮对话、消息列表管理/裁剪/过滤/合并",
+  "output": "实现多轮对话记忆",
+  "time": "1.5h"
+ },
+ {
+  "day": 49,
+  "week": 7,
+  "course": "LangChain",
+  "range": "59—66",
+  "tag": "LangChain",
+  "task": "提示词模板、LangChain Hub、少样本提示、逻辑推理、信息提取、示例选择器",
+  "output": "做一个 few-shot 信息抽取器",
+  "time": "3h"
+ },
+ {
+  "day": 50,
+  "week": 8,
+  "course": "LangChain",
+  "range": "67—74",
+  "tag": "LangChain",
+  "task": "示例选择器（MMR/NGram）、输出解析器（Pydantic/JSON）、RAG 概念/演示/流程",
+  "output": "把输出解析成固定字段",
+  "time": "1.5h"
+ },
+ {
+  "day": 51,
+  "week": 8,
+  "course": "LangChain",
+  "range": "75—82",
+  "tag": "LangChain",
+  "task": "文档加载器 PDF/Markdown、文本分割器（字符/token/强制长度/代码）、嵌入模型",
+  "output": "用 LangChain 切一份 PDF",
+  "time": "1.5h"
+ },
+ {
+  "day": 52,
+  "week": 8,
+  "course": "LangChain",
+  "range": "83—90",
+  "tag": "LangChain",
+  "task": "向量存储介绍/索引；内存向量存储 CRUD/检索；Redis 向量存储",
+  "output": "建一个本地向量库",
+  "time": "1.5h"
+ },
+ {
+  "day": 53,
+  "week": 8,
+  "course": "LangChain",
+  "range": "91—95",
+  "tag": "LangChain",
+  "task": "Redis CRUD/检索、Pinecone、检索器、RAG 案例实现",
+  "output": "LangChain 版 RAG 跑通",
+  "time": "1.5h"
+ },
+ {
+  "day": 54,
+  "week": 8,
+  "course": "LangGraph",
+  "range": "01—07",
+  "tag": "LangChain",
+  "task": "LangGraph 引入、Agent Server、核心概念、智能快递配送案例、编码",
+  "output": "画出状态图",
+  "time": "1.5h"
+ },
+ {
+  "day": 55,
+  "week": 8,
+  "course": "LangGraph",
+  "range": "08—14",
+  "tag": "LangChain",
+  "task": "支持搜索的智能代理、代理式 RAG、补充知识点、工作流模式（提示链/并行/路由）",
+  "output": "跑通一个最小 LangGraph",
+  "time": "3h"
+ },
+ {
+  "day": 56,
+  "week": 8,
+  "course": "复盘",
+  "range": "第 8 周",
+  "tag": "复盘",
+  "task": "把 RAG + LangChain 版整合；准备 5 分钟汇报：问题—方法—结果—不足",
+  "output": "最终 demo + 5 分钟讲解稿",
+  "time": "3h"
+ },
+ {
+  "day": 57,
+  "week": 9,
+  "course": "Coze",
+  "range": "01—12",
+  "tag": "Agent",
+  "task": "Coze 是什么、产品矩阵、注册、开发平台、空间、智能体、模式、大模型设置、提示词、发布",
+  "output": "注册 Coze，建第一个 Bot",
+  "time": "2h"
+ },
+ {
+  "day": 58,
+  "week": 9,
+  "course": "Coze",
+  "range": "13—24",
+  "tag": "Agent",
+  "task": "插件分类与使用、知识库、RAG、数据库、工作流引入/分类",
+  "output": "给 Bot 加知识库和 1 个插件",
+  "time": "2h"
+ },
+ {
+  "day": 59,
+  "week": 9,
+  "course": "Coze",
+  "range": "25—36",
+  "tag": "Agent",
+  "task": "工作流基础节点、业务逻辑节点、代码节点、数据库节点、知识库写入/检索/删除",
+  "output": "搭一条 3 节点工作流",
+  "time": "2h"
+ },
+ {
+  "day": 60,
+  "week": 9,
+  "course": "Coze",
+  "range": "37—48",
+  "tag": "Agent",
+  "task": "工作流其他节点、结语；智能体调试、发布、渠道配置",
+  "output": "发布 Bot 并测试 5 个问题",
+  "time": "2h"
+ },
+ {
+  "day": 61,
+  "week": 9,
+  "course": "Coze",
+  "range": "49—60",
+  "tag": "Agent",
+  "task": "知识库进阶、变量、卡片、多轮对话、快捷指令等平台功能",
+  "output": "记录 3 个平台能力边界",
+  "time": "2h"
+ },
+ {
+  "day": 62,
+  "week": 9,
+  "course": "Coze",
+  "range": "61—72",
+  "tag": "Agent",
+  "task": "综合案例：从需求到 Bot/工作流/知识库/发布",
+  "output": "做一个“烧结知识问答”Bot",
+  "time": "2h"
+ },
+ {
+  "day": 63,
+  "week": 9,
+  "course": "Coze",
+  "range": "73—84",
+  "tag": "Agent",
+  "task": "案例收尾、发布、测试、复盘；AI 面试题 01—06",
+  "output": "Bot 链接 + 10 条测试记录",
+  "time": "3h"
+ },
+ {
+  "day": 64,
+  "week": 10,
+  "course": "OpenClaw",
+  "range": "01—04",
+  "tag": "Agent",
+  "task": "课程概述、OpenClaw 简介、环境依赖、阿里云一键部署；AI 面试 07—08",
+  "output": "画出 OpenClaw 架构图",
+  "time": "2h"
+ },
+ {
+  "day": 65,
+  "week": 10,
+  "course": "OpenClaw",
+  "range": "05—08",
+  "tag": "Agent",
+  "task": "模型选择、Linux 部署、访问测试、Windows 本地部署方案；AI 面试 09—10",
+  "output": "选一种方式跑通访问",
+  "time": "2h"
+ },
+ {
+  "day": 66,
+  "week": 10,
+  "course": "OpenClaw",
+  "range": "09—12",
+  "tag": "Agent",
+  "task": "Windows 部署、桌面安装包、其他部署方式、配置与常见问题；AI 面试 11—12",
+  "output": "记录 3 个部署坑",
+  "time": "2h"
+ },
+ {
+  "day": 67,
+  "week": 10,
+  "course": "OpenClaw",
+  "range": "13—16",
+  "tag": "Agent",
+  "task": "核心功能、常用命令、通道配置（飞书/钉钉）；AI 面试 13—14",
+  "output": "配一个通道或记录配置流程",
+  "time": "2h"
+ },
+ {
+  "day": 68,
+  "week": 10,
+  "course": "OpenClaw",
+  "range": "17—20",
+  "tag": "Agent",
+  "task": "通道配置、Skill 概述、内置 Skill、安装方式；AI 面试 15—16",
+  "output": "安装 1 个 Skill 并测试",
+  "time": "2h"
+ },
+ {
+  "day": 69,
+  "week": 10,
+  "course": "OpenClaw",
+  "range": "21—24",
+  "tag": "Agent",
+  "task": "TavilyWebSearch、Playwright 介绍与使用；AI 面试 17—18",
+  "output": "做一个搜索/网页操作 Skill",
+  "time": "2h"
+ },
+ {
+  "day": 70,
+  "week": 10,
+  "course": "OpenClaw",
+  "range": "25—28",
+  "tag": "Agent",
+  "task": "Skill 格式、天气/二维码/每日早报实战；AI 面试 19—24",
+  "output": "1 个自定义 Skill + 对比 Coze",
+  "time": "3h"
+ },
+ {
+  "day": 71,
+  "week": 11,
+  "course": "Docker",
+  "range": "01—10",
+  "tag": "工程",
+  "task": "Docker 介绍、技术架构、单机/数据分离/集群/读写分离/冷热分离架构",
+  "output": "写出 3 种架构差异",
+  "time": "2h"
+ },
+ {
+  "day": 72,
+  "week": 11,
+  "course": "Docker",
+  "range": "11—20",
+  "tag": "工程",
+  "task": "微服务架构、容器编排、Docker 安装与基本命令",
+  "output": "本机装好 Docker，跑 hello-world",
+  "time": "2h"
+ },
+ {
+  "day": 73,
+  "week": 11,
+  "course": "Docker",
+  "range": "21—30",
+  "tag": "工程",
+  "task": "镜像、容器、仓库、端口映射、数据卷",
+  "output": "跑一个 Python 容器并挂载目录",
+  "time": "2h"
+ },
+ {
+  "day": 74,
+  "week": 11,
+  "course": "Docker",
+  "range": "31—40",
+  "tag": "工程",
+  "task": "Dockerfile 基础、FROM/RUN/COPY/CMD/ENTRYPOINT",
+  "output": "写第一个 Dockerfile",
+  "time": "2h"
+ },
+ {
+  "day": 75,
+  "week": 11,
+  "course": "Docker",
+  "range": "41—50",
+  "tag": "工程",
+  "task": "Dockerfile 进阶、镜像构建、多阶段构建",
+  "output": "把 RAG demo 打成镜像",
+  "time": "2h"
+ },
+ {
+  "day": 76,
+  "week": 11,
+  "course": "Docker",
+  "range": "51—60",
+  "tag": "工程",
+  "task": "Docker Compose、网络、环境变量、日志",
+  "output": "写 docker-compose.yml",
+  "time": "2h"
+ },
+ {
+  "day": 77,
+  "week": 11,
+  "course": "复盘",
+  "range": "第 11 周",
+  "tag": "复盘",
+  "task": "Dockerize 最终 RAG/Agent demo；写 docker compose；预习 MySQL 01—03",
+  "output": "一键启动的 Docker 项目",
+  "time": "3h"
+ },
+ {
+  "day": 78,
+  "week": 12,
+  "course": "MySQL 进阶",
+  "range": "04—09",
+  "tag": "工程",
+  "task": "存储过程语法、系统变量、自定义变量、条件判断、参数",
+  "output": "能写一个带参数的存储过程",
+  "time": "2h"
+ },
+ {
+  "day": 79,
+  "week": 12,
+  "course": "MySQL 进阶",
+  "range": "10—15",
+  "tag": "工程",
+  "task": "CASE、循环、游标、条件处理、存储函数",
+  "output": "写一个带循环的存储过程",
+  "time": "2h"
+ },
+ {
+  "day": 80,
+  "week": 12,
+  "course": "MySQL 进阶",
+  "range": "16—21",
+  "tag": "工程",
+  "task": "触发器、视图、索引基础、SQL 优化基础",
+  "output": "建表 + 索引 + 查询",
+  "time": "2h"
+ },
+ {
+  "day": 81,
+  "week": 12,
+  "course": "MySQL 进阶",
+  "range": "22—27",
+  "tag": "工程",
+  "task": "执行计划、慢查询、事务基础",
+  "output": "用 EXPLAIN 分析一条查询",
+  "time": "2h"
+ },
+ {
+  "day": 82,
+  "week": 12,
+  "course": "Harness",
+  "range": "Prompt 01—08",
+  "tag": "Prompt",
+  "task": "提示词工程背景、定义、基本要素、常见框架、角色、上下文、指令约束、输出格式",
+  "output": "写 3 个结构化 Prompt",
+  "time": "2h"
+ },
+ {
+  "day": 83,
+  "week": 12,
+  "course": "Harness",
+  "range": "Prompt 09—18",
+  "tag": "Prompt",
+  "task": "零样本/单样本/少样本、Few-Shot、COT、代码实现",
+  "output": "做一个 Few-Shot/CoT 对比",
+  "time": "2h"
+ },
+ {
+  "day": 84,
+  "week": 12,
+  "course": "复盘",
+  "range": "第 12 周",
+  "tag": "复盘",
+  "task": "Harness Prompt 19—26 收尾；AI Coding 01—06 选做；整合 12 周成果，准备 10 分钟汇报",
+  "output": "最终项目 + 12 周总结 + 10 分钟汇报稿",
+  "time": "3h"
+ }
+]

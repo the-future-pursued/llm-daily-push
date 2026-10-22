@@ -1,0 +1,142 @@
+[
+ {
+  "day": 1,
+  "task": "装 Python 3.10+、VS Code、Git；建虚拟环境；写 `hello.py` 打印姓名和日期；`git init` 首次提交",
+  "output": "`hello.py` + 首次 commit"
+ },
+ {
+  "day": 2,
+  "task": "学函数、类、`try/except`、`logging`；把 `hello.py` 改成一个带异常处理和日志的函数",
+  "output": "`hello_v2.py`"
+ },
+ {
+  "day": 3,
+  "task": "学文件读写、JSON、CSV；写一个脚本读 `config.json` 和 `questions.csv`，打印问题列表",
+  "output": "`read_files.py` + 示例文件"
+ },
+ {
+  "day": 4,
+  "task": "学 Git：`add/commit/status/log/.gitignore`；把前三天代码整理提交；写 5 行 README",
+  "output": "README + 3 次 commit"
+ },
+ {
+  "day": 5,
+  "task": "学 HTTP/REST/JSON/鉴权/超时重试；用 `requests` 调一个公开 API（或 DeepSeek API）并打印结果",
+  "output": "`api_call.py`"
+ },
+ {
+  "day": 6,
+  "task": "周末 2 小时：把前面拼起来——读 `questions.csv`，逐条调 API，结果存 `answers.json`，错误写 `error.log`",
+  "output": "`llm_cli.py` 可运行"
+ },
+ {
+  "day": 7,
+  "task": "复盘 30 分钟：补 README 的“如何运行”；把本周代码提交；写下周想解决的问题",
+  "output": "README 完整"
+ },
+ {
+  "day": 8,
+  "task": "学 pandas 读写 CSV/Excel、`head/info/describe`；读一份模拟烧结数据并打印概览",
+  "output": "`01_inspect.ipynb`"
+ },
+ {
+  "day": 9,
+  "task": "学缺失值、重复值、异常值处理；对数据做清洗并保存",
+  "output": "`clean_data.csv`"
+ },
+ {
+  "day": 10,
+  "task": "学 `groupby`、`merge`；按碱度/温度分组统计 FeO 均值",
+  "output": "`02_groupby.ipynb`"
+ },
+ {
+  "day": 11,
+  "task": "学 matplotlib/seaborn：画 FeO 分布、温度-FeO 散点、相关性热力图",
+  "output": "3 张图"
+ },
+ {
+  "day": 12,
+  "task": "学训练/验证/测试划分、数据泄漏；写一页数据卡（来源、字段、缺失、用途、风险）",
+  "output": "`data_card.md`"
+ },
+ {
+  "day": 13,
+  "task": "周末 2 小时：把清洗、图、数据卡整理成一份 1 页小报告；代码提交",
+  "output": "`week2_report.md`"
+ },
+ {
+  "day": 14,
+  "task": "从烧结教材/讲义中整理 30 个问题，写标准答案和出处；做评分 rubric（正确/部分正确/错误）",
+  "output": "`eval_set_30.csv`"
+ },
+ {
+  "day": 15,
+  "task": "学 prompt 角色、few-shot、结构化 JSON、拒答；写 3 个版本问同一个烧结问题，比较差异",
+  "output": "`prompts.md`"
+ },
+ {
+  "day": 16,
+  "task": "学 PDF/txt 解析与 chunk：固定长度、overlap、按标题；把 20—30 页文档切成 chunks",
+  "output": "`chunks.jsonl`"
+ },
+ {
+  "day": 17,
+  "task": "学 embedding 与余弦相似度；用 FAISS 或 Chroma 建索引；输入一个问题检索 top-3",
+  "output": "`retrieval.py`"
+ },
+ {
+  "day": 18,
+  "task": "学 top-k、BM25、稠密/混合检索概念；实现检索并打印命中片段",
+  "output": "`retrieval_compare.py`"
+ },
+ {
+  "day": 19,
+  "task": "把检索片段拼进 prompt，要求“只根据资料回答，并给出出处”；无依据时拒答",
+  "output": "`rag_answer.py`"
+ },
+ {
+  "day": 20,
+  "task": "周末 2 小时：搭一个最小 RAG demo（命令行即可）；跑 20 个问题；记录失败案例",
+  "output": "`rag_demo/` + `failures.md`"
+ },
+ {
+  "day": 21,
+  "task": "复盘 40 分钟：把 demo 写成 README；列出 5 类失败：检索失败/知识缺失/幻觉/引用错配/工艺错误",
+  "output": "README + 失败清单"
+ },
+ {
+  "day": 22,
+  "task": "把评测集扩到 50 条；每条含问题、标准答案、出处、难度",
+  "output": "`eval_set_50.csv`"
+ },
+ {
+  "day": 23,
+  "task": "定指标：正确性、忠实度、引用准确率、拒答合理性；写人工评分 rubric",
+  "output": "`rubric.md`"
+ },
+ {
+  "day": 24,
+  "task": "跑 baseline：RAG demo 回答 50 条；人工打分；存结果表",
+  "output": "`eval_results_v1.csv`"
+ },
+ {
+  "day": 25,
+  "task": "错误分析：把错误分成 5 类，每类找 2 个例子；统计占比",
+  "output": "`error_analysis.md`"
+ },
+ {
+  "day": 26,
+  "task": "只改一个变量：chunk 大小或 top-k 或 query 改写；重跑 50 条；对比",
+  "output": "`eval_results_v2.csv`"
+ },
+ {
+  "day": 27,
+  "task": "周末 2 小时：写 2 页小报告（方法、结果、错误、下一步）；整理代码和 README",
+  "output": "`mini_report.md`"
+ },
+ {
+  "day": 28,
+  "task": "复盘 60 分钟：向师兄/导师做 5 分钟汇报；记录反馈；列下一个四周计划",
+  "output": "汇报记录"
+ }
+]
