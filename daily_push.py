@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""每天把 LLM 计划当天的任务推到微信（Server酱）。
+"""每天把当天的所有计划推到微信（Server酱）。
 
-两条轨同时推：
-  · 84 天主计划（tasks.json，从 LLM学习计划_12周.html 抽的）
-  · 28 天补短板轨（supplement_28.json，从 前四周LLM补短板每日计划.md 抽的，只到第 28 天）
+按日期合并四条轨：
+  · LLM 主计划    tasks.json         84 天，按"第几天"索引（起始 START_DATE）
+  · LLM 补短板轨  supplement_28.json 28 天，同上
+  · 数学竞赛冲刺  math.json          按日期索引（10/24–11/14）
+  · 英语六级      cet6.json          按日期索引（10/24–12/12）
 
 用法：
     python daily_push.py                 # 推送"今天"的任务
     python daily_push.py --dry-run       # 只看内容，不发
-    python daily_push.py --day 12        # 假装今天是第 12 天
     python daily_push.py --date 2026-11-05
-
-SendKey 从环境变量 SERVERCHAN_SENDKEY 读，不要写死在代码里。
+    python daily_push.py --day 12        # 只按 LLM 第几天算（调试用）
 """
 
 import argparse
@@ -25,19 +25,28 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 # ---------------- 改这里就够了 ----------------
-START_DATE = date(2026, 10, 23)   # 第 1 天是哪天
-GOAL_DATE = date(2027, 9, 1)      # 保研目标日，用来算倒计时
-TOTAL_DAYS = 84                   # 主计划多少天
+START_DATE = date(2026, 10, 23)   # LLM 第 1 天
+GOAL_DATE = date(2027, 9, 1)      # 保研目标日
+TOTAL_DAYS = 84                   # LLM 主计划天数
+SUPPLEMENT_DEFAULT_HOURS = 0.75   # 补短板轨没有时长字段，按 45 分钟估算
 # ---------------------------------------------
 
 HERE = Path(__file__).resolve().parent
 TASKS_FILE = HERE / "tasks.json"
 SUPPLEMENT_FILE = HERE / "supplement_28.json"
+CET6_FILE = HERE / "cet6.json"
+MATH_FILE = HERE / "math.json"
 API_TMPL = "https://sctapi.ftqq.com/{key}.send"
+
+WEEKDAYS = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+CIRCLED = "①②③④⑤⑥"
+CUT_RULE = (
+    "**时间不够的砍法**：按硬截止排——数学（11/14 考）→ 六级（12/12 考）→ "
+    "LLM 主计划；补短板轨只做「要交出来」那一项。"
+)
 
 
 def beijing_today() -> date:
-    """取北京时间的今天。GitHub 的服务器走 UTC，必须显式换算，否则会差一天。"""
     try:
         from zoneinfo import ZoneInfo
 
@@ -46,56 +55,124 @@ def beijing_today() -> date:
         return datetime.now(timezone(timedelta(hours=8))).date()
 
 
-def load_json(path: Path):
+def read_key() -> str:
+    key = os.environ.get("SERVERCHAN_SENDKEY", "").strip()
+    if key.startswith("SCT") and len(key) >= 20:
+        return key
+    f = HERE / "key.txt"
+    if f.exists():
+        for line in f.read_text(encoding="utf-8", errors="replace").splitlines():
+            line = line.strip()
+            if line.startswith("SCT") and len(line) >= 20:
+                return line
+    return ""
+
+
+def load_list(path: Path):
+    """按 day 整除索引的列表（tasks.json / supplement_28.json）。"""
     if not path.exists():
         return {}
     with path.open(encoding="utf-8") as f:
-        rows = json.load(f)
-    return {int(r["day"]): r for r in rows}
+        return {int(r["day"]): r for r in json.load(f)}
 
 
-def build(day: int, today: date, tasks, sup) -> tuple:
-    """返回 (title, desp)。"""
-    total = min(day, TOTAL_DAYS)
+def load_bydate(path: Path):
+    """按日期索引（math.json / cet6.json）。"""
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as f:
+        return json.load(f)
+
+
+def hours_of(text: str) -> float:
+    """把 '1.5h' / '2h' / '141 分钟' / '10′' 换成小时数。"""
+    if not text:
+        return 0.0
+    t = text.replace("小时", "h").strip()
+    num = "".join(ch for ch in t if ch.isdigit() or ch == ".")
+    try:
+        v = float(num)
+    except ValueError:
+        return 0.0
+    if "分" in t or "′" in t or "'" in t:
+        return v / 60
+    return v
+
+
+def build(today: date, llm: dict, sup: dict, cet: dict, mathp: dict):
+    dkey = today.isoformat()
+    day = (today - START_DATE).days + 1
     left_goal = (GOAL_DATE - today).days
-    left_plan = TOTAL_DAYS - day
 
-    t = tasks.get(total)
-    if t is None:
-        return f"计划已到第 {day} 天", "任务表里没有这一天的内容了，去改 tasks.json。"
+    blocks, title_bits, total_h = [], [], 0.0
 
-    title = f"D{day:02d} · {t['course']} {t['range']}"
+    # ① LLM 主计划
+    if 1 <= day <= TOTAL_DAYS and llm.get(day):
+        t = llm[day]
+        total_h += hours_of(t["time"])
+        title_bits.append(f"LLM D{day}")
+        blocks.append(
+            f"**LLM 主计划 D{day}/84 · {t['time']}**\n"
+            f"做：{t['task']}\n"
+            f"交：{t['output']}"
+        )
 
-    lines = [
-        f"**第 {t['week']} 周 · 第 {day}/84 天 · 预计 {t['time']}**",
-        "",
-        f"**今天做**：{t['task']}",
-        "",
-        f"**要交出来**：{t['output']}",
-    ]
-
-    s = sup.get(day)
+    # ② 补短板轨
+    s = sup.get(day) if 1 <= day <= TOTAL_DAYS else None
     if s:
-        lines += [
-            "",
-            f"**补短板轨 D{day}（30—60 分钟）**",
-            f"今天做：{s['task']}",
-            f"要交出来：{s['output']}",
-            "",
-            "**时间不够的砍法**：只做补短板轨那条——84 天主计划 D8 的 RAG 要用 Python，"
-            "这条是地基；主计划当天没做完，顺延到周末复盘日补。",
-        ]
-    else:
-        lines += [
-            "",
-            "**时间不够的砍法**：只完成上面「要交出来」那一项，剩下的记到本周复盘日补。",
-        ]
+        total_h += SUPPLEMENT_DEFAULT_HOURS
+        blocks.append(
+            f"**LLM 补短板 D{day} · 30—60 分钟**\n"
+            f"做：{s['task']}\n"
+            f"交：{s['output']}"
+        )
 
-    if day == 29:
-        lines += ["", "补短板轨 28 天已走完，从今天起只推 84 天主计划。"]
+    # ③ 数学冲刺
+    m = mathp.get(dkey)
+    if m:
+        total_h += hours_of(m.get("video", ""))
+        title_bits.append(f"数学 {m['dnum']}")
+        head = f"**数学冲刺 {m['dnum']}"
+        if m.get("video"):
+            head += f" · 视频 {m['video']}"
+        head += "**"
+        body = [head, f"做：{m['title']}"]
+        if m.get("goal"):
+            body.append(f"要点：{m['goal']}")
+        if m.get("methods"):
+            body.append("解法：" + "｜".join(f"{x['name']}（{x['q']}）" for x in m["methods"]))
+        blocks.append("\n".join(body))
 
-    lines += ["", f"进度 {day}/84（还剩 {left_plan} 天） · 距保研 {left_goal} 天"]
-    return title, "\n".join(lines)
+    # ④ 六级
+    c = cet.get(dkey)
+    if c:
+        total_h += hours_of(c.get("time", ""))
+        title_bits.append("六级")
+        body = [f"**六级 · {c.get('time') or '—'}**"]
+        body += [f"· {x}" for x in c.get("tasks", [])]
+        blocks.append("\n".join(body))
+
+    if not blocks:
+        return (
+            f"{today.month}月{today.day}日 · 无计划",
+            f"这一天四条轨都没有排任务（LLM 第 {day} 天，数学/六级已结束或未开始）。\n"
+            f"距保研 {left_goal} 天。",
+        )
+
+    title = f"{today.month}/{today.day} {WEEKDAYS[today.weekday()]} · " + " + ".join(title_bits)
+    if len(title) > 34:
+        title = f"{today.month}/{today.day} {WEEKDAYS[today.weekday()]} · 今日 {len(blocks)} 块"
+
+    parts = [f"**{today.month}月{today.day}日 {WEEKDAYS[today.weekday()]} · 共 {len(blocks)} 块**", ""]
+    for i, b in enumerate(blocks):
+        parts.append(f"{CIRCLED[i]} {b}")
+        parts.append("")
+    parts.append(f"**今日合计约 {total_h:.1f} 小时**（数学只算视频，做题另计）")
+    parts.append("")
+    parts.append(CUT_RULE)
+    parts.append("")
+    parts.append(f"LLM 第 {day}/84 天 · 距保研 {left_goal} 天")
+    return title, "\n".join(parts)
 
 
 def send(key: str, title: str, desp: str) -> None:
@@ -120,46 +197,43 @@ def send(key: str, title: str, desp: str) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="只打印，不发送")
-    ap.add_argument("--day", type=int, default=None, help="强制指定第几天")
+    ap.add_argument("--day", type=int, default=None, help="强制按 LLM 第几天算")
     ap.add_argument("--date", default=None, help="强制指定日期 YYYY-MM-DD")
     args = ap.parse_args()
 
     if args.day:
-        # 强制第 N 天时，把日期也一起算成那天，免得进度和倒计时对不上
-        day = args.day
-        today = START_DATE + timedelta(days=day - 1)
+        today = START_DATE + timedelta(days=args.day - 1)
     else:
         today = date.fromisoformat(args.date) if args.date else beijing_today()
-        day = (today - START_DATE).days + 1
 
-    if day < 1:
-        print(f"计划还没开始（第 1 天是 {START_DATE}），今天 {today}。")
-        return 0
-
-    tasks = load_json(TASKS_FILE)
-    sup = load_json(SUPPLEMENT_FILE)
-    if not tasks:
+    llm = load_list(TASKS_FILE)
+    if not llm:
         print("读不到 tasks.json，检查文件是否和脚本放一起。", file=sys.stderr)
         return 2
-    if not sup:
-        print("提示：没有 supplement_28.json，今天只推 84 天主计划。", file=sys.stderr)
+    sup = load_list(SUPPLEMENT_FILE)
+    cet = load_bydate(CET6_FILE)
+    mathp = load_bydate(MATH_FILE)
+    for name, d in (("supplement_28.json", sup), ("cet6.json", cet), ("math.json", mathp)):
+        if not d:
+            print(f"提示：没有读到 {name}，这一块今天不推。", file=sys.stderr)
 
-    title, desp = build(day, today, tasks, sup)
+    title, desp = build(today, llm, sup, cet, mathp)
 
     if args.dry_run:
-        print("=" * 46)
+        print("=" * 50)
         print("标题:", title)
-        print("-" * 46)
+        print("-" * 50)
         print(desp)
-        print("=" * 46)
+        print("=" * 50)
         return 0
 
-    key = os.environ.get("SERVERCHAN_SENDKEY", "").strip()
+    key = read_key()
     if not key:
         print(
-            "缺少 SERVERCHAN_SENDKEY。\n"
-            "本地：$env:SERVERCHAN_SENDKEY='SCTxxxxx'\n"
-            "GitHub：仓库 Settings → Secrets → Actions 里加同名 secret。",
+            "没读到 SendKey。两种填法任选其一：\n"
+            "  1) 把 SCT... 那串粘进本目录的 key.txt（推荐）\n"
+            "  2) PowerShell 里临时设置：$env:SERVERCHAN_SENDKEY='SCTxxxxx'\n"
+            "GitHub 上跑的话，要在仓库 Settings → Secrets → Actions 里加同名 secret。",
             file=sys.stderr,
         )
         return 2
